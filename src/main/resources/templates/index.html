@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<div layout:fragment="content">
+  <div class="page">
+    <div class="page-wrapper">
+      <!-- Page header -->
+      <div class="page-header d-print-none">
+        <div class="container-xl">
+          <div class="row g-2 align-items-center">
+            <div class="col">
+              <h2 class="page-title">
+                URL 등록
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page body -->
+      <div class="page-body">
+        <div class="container-xl">
+          <div class="col-md">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">URL 등록</h3>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group mb-3 ">
+                    <label class="form-label required">타겟 URL</label>
+                    <div>
+                      <input type="text" class="form-control" placeholder="타겟 URL" id="inputUrl">
+                      <small class="form-hint">검색하고자 하는 URL을 입력해주세요.</small>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3 ">
+                    <div class="row g-2">
+                      <label class="form-label required">CSS 선택자를 입력해주세요</label>
+                      <div class="col">
+                        <input type="text" class="form-control" placeholder="CSS">
+                        <small class="form-hint">
+                          <a th:href="@{#}">CSS를 어떻게 찾아야할 지 모르겠어요!</a>
+                        </small>
+                      </div>
+                      <div class="col-auto">
+                        <button type="button" class="btn btn-white btn-icon" onclick="showCssSearchModal();">
+                          <i class="ti ti-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group mb-3 ">
+                    <label class="form-label">알림주기</label>
+                    <div>
+                      <label>
+                        <select class="form-select">
+                          <option>10분</option>
+                          <option>30분</option>
+                          <option>1시간</option>
+                          <option>2시간</option>
+                        </select>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="form-footer">
+                    <button type="submit" class="btn btn-primary">저장하기</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" tabindex="-1" id="testModal">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">New report</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="example-text-input" placeholder="Your report name">
+          </div>
+          <label class="form-label">Report type</label>
+          <div class="form-selectgroup-boxes row mb-3">
+            <div class="col-lg-6">
+              <label class="form-selectgroup-item">
+                <input type="radio" name="report-type" value="1" class="form-selectgroup-input" checked>
+                <span class="form-selectgroup-label d-flex align-items-center p-3">
+                <span class="me-3">
+                  <span class="form-selectgroup-check"></span>
+                </span>
+                <span class="form-selectgroup-label-content">
+                  <span class="form-selectgroup-title strong mb-1">Simple</span>
+                  <span class="d-block text-muted">Provide only basic data needed for the report</span>
+                </span>
+              </span>
+              </label>
+            </div>
+            <div class="col-lg-6">
+              <label class="form-selectgroup-item">
+                <input type="radio" name="report-type" value="1" class="form-selectgroup-input">
+                <span class="form-selectgroup-label d-flex align-items-center p-3">
+                <span class="me-3">
+                  <span class="form-selectgroup-check"></span>
+                </span>
+                <span class="form-selectgroup-label-content">
+                  <span class="form-selectgroup-title strong mb-1">Advanced</span>
+                  <span class="d-block text-muted">Insert charts and additional advanced analyses to be inserted in the report</span>
+                </span>
+              </span>
+              </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-8">
+              <div class="mb-3">
+                <label class="form-label">Report url</label>
+                <div class="input-group input-group-flat">
+                <span class="input-group-text">
+                  https://tabler.io/reports/
+                </span>
+                  <input type="text" class="form-control ps-0"  value="report-01" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="mb-3">
+                <label class="form-label">Visibility</label>
+                <select class="form-select">
+                  <option value="1" selected>Private</option>
+                  <option value="2">Public</option>
+                  <option value="3">Hidden</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">Client name</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label class="form-label">Reporting period</label>
+                <input type="date" class="form-control">
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div>
+                <label class="form-label">Additional information</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+            Cancel
+          </a>
+          <a href="#" class="btn btn-primary ms-auto" data-bs-dismiss="modal">
+            <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
+            <!-- SVG icon code -->
+            Create new report
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" th:src="@{/js/index.js}"></script>
+</div>
+</html>
